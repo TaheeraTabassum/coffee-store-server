@@ -37,9 +37,21 @@ async function run() {
 }
 run().catch(console.dir);
 
+const coffees = [
+  
+]
 app.get('/', (req, res)=>{
     res.send("coffee data on server")
 })
+app.get('/coffees', (req, res)=>{
+ res.send(coffees)
+})
+app.post('/coffees', async(req, res)=>{
+  const newCoffee = req.body;
+  console.log(newCoffee);
+  coffees.push(newCoffee)
+})
+
 
 app.listen(port , ()=>{
     console.log(`server is running on port : ${port}`);
